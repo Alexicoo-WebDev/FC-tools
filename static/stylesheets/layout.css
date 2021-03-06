@@ -1,0 +1,49 @@
+/*
+    This Stylesheet is used to apply styling directly to the layout.html
+    Use this stylesheet when you want apply to all templates that use layout.html
+*/
+body {
+    background-image: url('https://source.unsplash.com/collection/327760/1600x900');
+    background-size: cover;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: ivory;
+    background-color: slategrey;
+    padding: 5px;
+}
+
+p, a {
+    font-size: 16px;
+    
+}
+
+.center{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.widget{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: rgb(0,0,0,0.2);
+}
+
+.grid-container{
+    display: grid;
+    grid-column-gap: 20px;
+    grid-template-columns: auto auto auto;
+    background-color: rgb(255,199,68,0.2);
+}
+
+.info{
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: rgb(255,199,68,0.2);
+    color: white;
+    font-weight: bold;
+}

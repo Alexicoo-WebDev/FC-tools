@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h3>Stripped at-risk result</h3>
+
+
+    <div class="info">
+        <table>
+        {% for row in rows %}
+                <tr><td>{{ row }}</td></tr>
+        {% endfor %}
+        </table>
+    </div>
+
+    <div class="info">
+        <h4>cleaned user-input:</h4>
+        <p>{{temp}}</p>
+
+    </div>
+
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='javascript/home.js') }}"></script>
+{% endblock %}
