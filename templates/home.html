@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-    <h3>SET Helper</h3>
+    <h1>SET Helper</h3>
 
 
     <div class="grid-container">
@@ -10,11 +10,16 @@
             <form action="" method="post">
                 <textarea name="data" rows="10" cols="60">data_goes_here</textarea>
                 <br><br>
-                <input type="submit">
+                <input type="submit" name="action" value="strip">
             </form>
         </div>
         <div class="widget" id=widget_02>
-            Widget 2 goes here
+            <h3>Reformat quiz questions</h3>
+            <form action="" method="post">
+                <textarea name="quizdata" rows="10" cols="60">data_goes_here</textarea>
+                <br><br>
+                <input type="submit" name="action" value="quiz">
+            </form>
         </div>
         <div class="widget" id=widget_03>
             Widget 3 goes here

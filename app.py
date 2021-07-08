@@ -14,44 +14,64 @@ def home_page():
 
     if request.method == 'POST':
 
-        print("-" * 30)
 
-        print("Phase 00")
+        if request.form.get('action') == 'strip':
+            print("-" * 30)
 
-        rows = []
+            print("Phase 00")
 
-        user_input = request.form['data']
-        user_input = user_input.lower()
+            rows = []
 
-        allowed = "abcdefghijklmnopqrstuvwxyz 1234567890()"
+            user_input = request.form['data']
+            user_input = user_input.lower()
 
-        temp_string = ""
+            allowed = "abcdefghijklmnopqrstuvwxyz 1234567890()"
 
-        for c in user_input:
-            if c in allowed:
-                temp_string += c
+            temp_string = ""
 
-        user_input = temp_string
+            for c in user_input:
+                if c in allowed:
+                    temp_string += c
 
-        temp = temp_string
+            user_input = temp_string
 
-        rows = user_input.split(")")
+            temp = temp_string
 
-        output = []
+            rows = user_input.split(")")
 
-        for row in rows:
+            output = []
 
-            temp_list = row.split("(")
+            for row in rows:
 
-            try:
-                class_nr = temp_list[1]
-                print(class_nr, class_nr[0], class_nr[1])
-                output.append(class_nr)        
-            except:
-                print("*** ERROR !! *** temp_list = ", temp_list)
+                temp_list = row.split("(")
 
+                try:
+                    class_nr = temp_list[1]
+                    print(class_nr, class_nr[0], class_nr[1])
+                    output.append(class_nr)        
+                except:
+                    print("*** ERROR !! *** temp_list = ", temp_list)
+        elif request.form.get('action') == 'quiz':
+            print("todo")
+            output = []
+            input = request.form.get('quizdata')
 
-        return render_template("stripped_atrisk_result.html", rows = output, temp = temp)
+            input = input.replace("a)","A|")
+            input = input.replace("b)","A|")
+            input = input.replace("c)","A|")
+            input = input.replace("d)","A|")
+
+            for i in range(6):
+                print(i)
+
+            input = input.replace("4.1","A|")
+
+            temp = input
+
+        else:
+            print("*** No such action ***")
+
+        return render_template("result.html", rows = output, temp = temp)
     
     return render_template('home.html')
 
