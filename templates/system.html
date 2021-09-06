@@ -5,24 +5,24 @@
 
     <div class="grid-container">
         <div class="widget" id=widget_01>
-            <h3>New target system</h3>
+            <h3 class="accent">View / Edit Information</h3>
             <form action="" method="post">
                 <div class="ajacent">
                     <p>
-                        <input type="text" name="system" placeholder="System">
-                        <input type="text" name="region" placeholder="Region">
-                        <input type="text" name="aliance" placeholder="Corp / Alliance">
+                        <input type="text" name="system" placeholder="System" value="{{s_data[0]}}">
+                        <input type="text" name="region" placeholder="Region" value="{{s_data[1]}}">
+                        <input type="text" name="aliance" placeholder="Corp / Alliance" value="{{s_data[2]}}">
                     </p>
                     <p>
-                        <input type="text" name="dotlan" placeholder="Dotlan link">
-                        <input type="text" name="zkill" placeholder="zKillboard link">
+                        <input type="text" name="dotlan" placeholder="Dotlan link" value="{{s_data[3]}}">
+                        <input type="text" name="zkill" placeholder="zKillboard link" value="{{s_data[4]}}">
                     </p>
                 </div>    
                 <div>
-                    <textarea name="remarks" rows="10" cols="60" placeholder="remarks"></textarea>
+                    <textarea name="remarks" rows="10" cols="60" placeholder="remarks">{{s_data[5]}}</textarea>
                 </div>
                 <br><br>
-                <input type="submit" name="action" value="Save">
+                <input type="submit" name="action" value="Update">
             </form>
         </div class="ajacent">
         <div class="widget" id=widget_02>

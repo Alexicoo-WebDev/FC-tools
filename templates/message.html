@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="center">
+        <h3>Message</h3>
+
+
+            
+        <div class="center" id="message">
+            <br>
+            <p>{{message}}</p>
+            <br>
+            <a href="/"><input type="submit" value="Back"></a>
+        </div>
+
+    </div>
+
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='javascript/home.js') }}"></script>
+{% endblock %}

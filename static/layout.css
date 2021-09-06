@@ -24,6 +24,15 @@ p, a {
     
 }
 
+input[type=submit]{
+    font-size: 20;
+}
+
+input[type=submit]:hover{
+    background-color: aqua;
+    font-weight: bold;
+}
+
 .center{
     text-align: center;
     margin-left: auto;
@@ -52,4 +61,19 @@ p, a {
     background-color: rgb(255,199,68,0.2);
     color: white;
     font-weight: bold;
+}
+
+.accent{
+    background-color: rgb(93, 53, 0);
+}
+
+#message{
+    background-color: darkred;
+    color: white;
+    font-size: 24;
+    font-weight: bold;
+    width: 500px;
+    padding: 40px;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }

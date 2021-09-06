@@ -2,3 +2,7 @@
     Use this file to apply custom styling to the home.html template
 */
 
+.ajecent{
+    display:flex;
+    position:relative;
+}
