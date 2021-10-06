@@ -14,14 +14,19 @@ cnx = mysql.connector.connect(user='fctools', password='rootdata',
                               host='fctools.mysql.pythonanywhere-services.com',
                                database='fctools$fcdata')
 
-cursor = cnx.cursor(buffered=True)
 #cnx.close()
 
 
 @app.route('/', methods=['GET','POST'])
 def home_page():
+    global cnx
 
+    cnx.close()
+    cnx = mysql.connector.connect(user='fctools', password='rootdata',
+                              host='fctools.mysql.pythonanywhere-services.com',
+                               database='fctools$fcdata')
 
+    cursor = cnx.cursor(buffered=True)
 
     system_list = []
 
@@ -64,10 +69,17 @@ def home_page():
             cursor.execute(add_system, data)
             cnx.commit()
      
-        
-        elif action[:6] == "system":
+            system_list = []
 
-            system_name = action[8:]
+            query = ("SELECT system FROM system_data")
+            cursor.execute(query)
+            result = cursor.fetchall()
+            for row in result:
+                system_list.append(row[0])
+        
+        elif action[:4] == "edit":
+
+            system_name = action[6:]
             query = ("SELECT system, region, aliance, dotlan, zkill, remarks FROM system_data")
             cursor.execute(query)
             result = cursor.fetchall()
@@ -79,6 +91,21 @@ def home_page():
 
                     
             return render_template('system.html', system_list=system_list, s_data=s_data)
+
+        elif action[:4] == "view":
+
+            system_name = action[6:]
+            query = ("SELECT system, region, aliance, dotlan, zkill, remarks FROM system_data")
+            cursor.execute(query)
+            result = cursor.fetchall()
+            s_data=["","","","","",""]
+            for row in result:
+                if row[0] == system_name:
+                    for i in range(6):
+                        s_data[i] = row[i]
+
+                    
+            return render_template('view.html', system_list=system_list, s_data=s_data)
 
         elif request.form.get('action') == 'Update':
             system = request.form.get('system')
@@ -108,6 +135,23 @@ def home_page():
             message = "Information updated"
             return render_template('message.html', message=message)
 
+        elif action[:4] == "dele":
+            target = action[8:]
+            print("--> Target: #" + target + "#")
+
+            #query = 'DELETE FROM system_data WHERE system="%s";'
+            #print(query)
+            cursor.execute('DELETE FROM system_data WHERE system="%s";' % target)
+            cnx.commit()
+            #cursor.execute("DELETE FROM system_data WHERE system='Test 2';")
+
+            system_list = []
+
+            query = ("SELECT system FROM system_data")
+            cursor.execute(query)
+            result = cursor.fetchall()
+            for row in result:
+                system_list.append(row[0])
 
         else:
             print("*** No such action ***", request.form.get('action'))
@@ -115,6 +159,54 @@ def home_page():
         
     
     return render_template('home.html', system_list=system_list)
+
+@app.route('/view', methods=['GET', 'POST'])
+def view():
+
+    global cnx
+
+    cnx.close()
+    cnx = mysql.connector.connect(user='fctools', password='rootdata',
+                              host='fctools.mysql.pythonanywhere-services.com',
+                              database='fctools$fcdata')
+
+    cursor = cnx.cursor(buffered=True)
+
+    system_list = []
+
+    s_data=["","","","","",""]
+
+    query = ("SELECT system, region, aliance, dotlan, zkill, remarks FROM system_data")
+    cursor.execute(query)
+    result = cursor.fetchall()
+    for i in range(6):
+        s_data[i] = result[0][i]
+
+    query = ("SELECT system FROM system_data")
+    cursor.execute(query)
+    result = cursor.fetchall()
+    for row in result:
+        system_list.append(row[0])
+
+    if request.method == 'POST':
+
+        action = request.form.get('action')
+
+        system_name = action[6:]
+        query = ("SELECT system, region, aliance, dotlan, zkill, remarks FROM system_data")
+        cursor.execute(query)
+        result = cursor.fetchall()
+        s_data=["","","","","",""]
+        for row in result:
+            if row[0] == system_name:
+                for i in range(6):
+                    s_data[i] = row[i]
+
+                    
+            
+
+    return render_template('view.html', system_list=system_list, s_data=s_data)
+    
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

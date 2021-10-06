@@ -29,7 +29,11 @@
             <h3>Targets</h3>
             <form action="" method="POST">
                 {% for item in system_list %}
-                    <p><input type="submit" name="action" value="system: {{item}}"></p>
+                    <p>
+                        <input type="submit" name="action" value="view: {{item}}">
+                        <input type="submit" name="action" value="edit: {{item}}">
+                        <input type="submit" name="action" value="delete: {{item}}">
+                    </p>
                 
                     <!--p><input type="submit" name="{{item}}">{{ item }}</p-->
                 {% endfor %}

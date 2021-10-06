@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h1>FC Helper</h3>
+
+    <div class="grid-container">
+        <div class="widget" id=widget_01>
+            <div class="ajacent">
+                <p>
+                    <h4>{{s_data[0]}}</h4>
+                    <h5>region: {{s_data[1]}}</h5>
+                    <h5>alliance: {{s_data[2]}}</h5>
+                </p>
+                <p>
+                    <a href="{{s_data[3]}}" target="_blank" class="dotlan">Dotlan</a>
+                    <a href="{{s_data[4]}}" target="_blank" class="zkill">zKillboard</a>
+                </p>
+            </div>    
+            <div class="system_info">
+                {{s_data[5]}}
+            </div>
+        </div>
+
+        <div class="widget" id=widget_02>
+            <h3>Targets</h3>
+            <form action="" method="POST">
+                {% for item in system_list %}
+                    <p><input type="submit" name="action" value="view: {{item}}"></p>                    
+                {% endfor %}
+            
+            </form>
+            
+        </div>
+        <!--div class="widget" id=widget_03>
+
+        </div -->
+    </div>
+
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='javascript/home.js') }}"></script>
+{% endblock %}

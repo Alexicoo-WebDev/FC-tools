@@ -7,9 +7,15 @@ body {
     background-size: cover;
 }
 
-h1, h2, h4, h5, h6 {
+h1, h2, h4 {
     color: ivory;
     background-color: slategrey;
+    padding: 5px;
+}
+
+h5, h6 {
+    color: rgb(202, 202, 176);
+    background-color: rgb(88, 99, 110);
     padding: 5px;
 }
 
@@ -67,6 +73,38 @@ input[type=submit]:hover{
     background-color: rgb(93, 53, 0);
 }
 
+.dotlan{
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px;
+    margin-right: 10px;
+    border: solid, black, 3px;
+    border-radius: 3px;
+    background-color: rgb(154, 219, 154);
+}
+
+.zkill{
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px;
+    margin-right: 10px;
+    border: solid, black, 3px;
+    border-radius: 3px;
+    background-color: lightcoral;
+}
+
+.system_info{
+    background-color: rgba(255,255,255,0.9);
+    color: black;
+    max-width: 500px;
+    font-weight: bold;
+    padding: 5px;
+}
+
 #message{
     background-color: darkred;
     color: white;
@@ -77,3 +115,4 @@ input[type=submit]:hover{
     margin-top: 40px;
     margin-bottom: 40px;
 }
+
